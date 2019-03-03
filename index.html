@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Animation</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1" >
+  </head>
+  <body>
+    <div id="abc"><img src="img/man.png"></div>
+  <script>
+  var is_drag = false;
+var offsetX = 0;
+var offsetY = 0;
+
+abc.onmousedown = function  () {
+is_drag = true;
+offsetX = e.offsetX;
+offsetY = e.offsetY;
+}
+
+abc.onmouseup = function  () {
+is_drag = false;
+};
+
+document.body.onmousemove = function  (e) {
+if (is_drag) {
+abc.style.top = e.pageY - offsetX + "px";
+abc.style.left = e.pageX - offsetY + "px";
+}
+};
+var is_drag = false;
+var offsetX = 0;
+var offsetY = 0;
+abc.onmousedown = function(e){
+  is_drag = true;
+  console.log("Drag start");
+  offsetX = e.offsetX;
+  offsetY = e.offsetY;
+}
+
+abc.onmouseup = function(){
+  is_drag = false;
+  console.log("Drag end");
+}
+
+document.body.onmousemove = function(e){
+  if(is_drag){
+    abc.style.top = e.pageY - offsetY + "px";
+    abc.style.left = e.pageX - offsetX + "px";
+  }
+
+};
+
+window.ondragstart = function(e){
+  e.preventDefault();
+}
+  </script>
+
+  </body>
+</html>
